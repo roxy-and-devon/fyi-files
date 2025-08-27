@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('children', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('age');
+            $table->string('grade_level');
+            $table->string('teacher');
+            $table->string('password');
+            $table->string('unique_link', 32)->unique();
+            $table->string('parent_email');
             $table->timestamps();
         });
     }
@@ -20,7 +27,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('children');
     }
