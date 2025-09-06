@@ -61,10 +61,10 @@ export default function Welcome() {
                             </div>
                         </div>
 
-                        <div className="space-y-6 p-6 m-10">
+                        <div className="m-10 space-y-6 p-6">
                             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                                 {/* Left Column - Photo and Basic Info */}
-                                <div className="space-y-4 w-50">
+                                <div className="w-50 space-y-4">
                                     <div className="flex flex-col items-center">
                                         <div className="flex h-40 w-40 items-center justify-center rounded-full border-4 border-gray-200 bg-gray-100">
                                             <span className="text-4xl text-gray-400">👤</span>
@@ -75,7 +75,7 @@ export default function Welcome() {
                                         </button>
                                     </div>
 
-                                    <div className="space-y-3 w-50">
+                                    <div className="w-50 space-y-3">
                                         <div>
                                             <label htmlFor="gradeLevel" className="mb-1 block text-sm font-medium text-gray-700">
                                                 Grade Level
@@ -121,7 +121,7 @@ export default function Welcome() {
                                 </div>
 
                                 {/* Right Columns - Main Form */}
-                                <div className="space-y-6 lg:col-span-2 w-100">
+                                <div className="w-100 space-y-6 lg:col-span-2">
                                     <div>
                                         <label htmlFor="studentName" className="mb-1 block text-sm font-medium text-gray-700">
                                             Child's Full Name
