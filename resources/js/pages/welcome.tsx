@@ -42,40 +42,40 @@ export default function Welcome() {
 
     return (
         <>
-            <Head title="FYI Files: Know My Student" />
+            <Head title="FYI Files" />
             <div className="min-h-screen bg-white p-4 text-black dark:bg-white dark:text-black">
                 <div className="mx-auto max-w-4xl">
                     <div className="rounded-lg border border-gray-200 bg-white shadow-lg">
                         <div className="relative border-b border-gray-200 p-6">
                             <div className="flex items-center justify-between">
-                                <h1 className="text-2xl font-bold text-gray-800">FYI Files: Know My Student</h1>
+                                <h1 className="text-2xl font-bold text-gray-800">FYI Files</h1>
                                 <div className="flex gap-2">
-                                    <button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+                                    <button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                         <Edit className="mr-1 h-4 w-4" />
                                         Edit
                                     </button>
-                                    <button className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+                                    <button className="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                         Add Child
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="space-y-6 p-6">
+                        <div className="space-y-6 p-6 m-10">
                             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                                 {/* Left Column - Photo and Basic Info */}
-                                <div className="space-y-4">
+                                <div className="space-y-4 w-50">
                                     <div className="flex flex-col items-center">
-                                        <div className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-gray-200 bg-gray-100">
+                                        <div className="flex h-40 w-40 items-center justify-center rounded-full border-4 border-gray-200 bg-gray-100">
                                             <span className="text-4xl text-gray-400">👤</span>
                                         </div>
-                                        <button className="mt-2 inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+                                        <button className="mt-6 inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                             <Upload className="mr-1 h-4 w-4" />
                                             Upload Photo
                                         </button>
                                     </div>
 
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 w-50">
                                         <div>
                                             <label htmlFor="gradeLevel" className="mb-1 block text-sm font-medium text-gray-700">
                                                 Grade Level
@@ -86,7 +86,7 @@ export default function Welcome() {
                                                 value={gradeLevel}
                                                 onChange={(e) => setGradeLevel(e.target.value)}
                                                 placeholder="e.g., 3rd Grade"
-                                                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                             />
                                         </div>
 
@@ -100,14 +100,14 @@ export default function Welcome() {
                                                 value={homeroomTeacher}
                                                 onChange={(e) => setHomeroomTeacher(e.target.value)}
                                                 placeholder="Teacher's name"
-                                                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                             />
                                         </div>
 
                                         <div>
                                             <label className="mb-1 block text-sm font-medium text-gray-700">Documentation</label>
                                             <div className="space-y-2">
-                                                <button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+                                                <button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                                     <Upload className="mr-1 h-4 w-4" />
                                                     Upload
                                                 </button>
@@ -121,7 +121,7 @@ export default function Welcome() {
                                 </div>
 
                                 {/* Right Columns - Main Form */}
-                                <div className="space-y-6 lg:col-span-2">
+                                <div className="space-y-6 lg:col-span-2 w-100">
                                     <div>
                                         <label htmlFor="studentName" className="mb-1 block text-sm font-medium text-gray-700">
                                             Child's Full Name
@@ -132,7 +132,7 @@ export default function Welcome() {
                                             value={studentName}
                                             onChange={(e) => setStudentName(e.target.value)}
                                             placeholder="Enter student's full name"
-                                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-lg shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                         />
                                     </div>
 
@@ -147,7 +147,7 @@ export default function Welcome() {
                                                     type="date"
                                                     value={dateOfBirth}
                                                     onChange={(e) => setDateOfBirth(e.target.value)}
-                                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                                 />
                                                 <Calendar className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
                                             </div>
@@ -168,7 +168,7 @@ export default function Welcome() {
                                             <label className="text-lg font-semibold text-gray-800">Medical Conditions</label>
                                             <button
                                                 onClick={() => setShowAddCondition(true)}
-                                                className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
+                                                className="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none"
                                             >
                                                 <Plus className="mr-1 h-4 w-4" />
                                                 Add
@@ -188,7 +188,7 @@ export default function Welcome() {
                                                         value={newCondition.name}
                                                         onChange={(e) => setNewCondition({ ...newCondition, name: e.target.value })}
                                                         placeholder="e.g., Type 1 Diabetes"
-                                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                                     />
                                                 </div>
                                                 <div>
@@ -201,19 +201,19 @@ export default function Welcome() {
                                                         onChange={(e) => setNewCondition({ ...newCondition, description: e.target.value })}
                                                         placeholder="Describe the condition, symptoms, triggers, or important notes..."
                                                         rows={3}
-                                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
+                                                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
                                                     />
                                                 </div>
                                                 <div className="flex gap-2">
                                                     <button
                                                         onClick={addCondition}
-                                                        className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
+                                                        className="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none"
                                                     >
                                                         Add Condition
                                                     </button>
                                                     <button
                                                         onClick={() => setShowAddCondition(false)}
-                                                        className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
+                                                        className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none"
                                                     >
                                                         Cancel
                                                     </button>
@@ -228,7 +228,7 @@ export default function Welcome() {
                                                     <h3 className="text-lg font-semibold text-gray-800">{condition.name}</h3>
                                                     <button
                                                         onClick={() => removeCondition(index)}
-                                                        className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
+                                                        className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none"
                                                     >
                                                         Remove
                                                     </button>
@@ -249,7 +249,7 @@ export default function Welcome() {
 
                             {/* Save Button */}
                             <div className="flex justify-center border-t border-gray-200 pt-6">
-                                <button className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+                                <button className="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-8 py-3 text-base font-medium text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                     Save Student Profile
                                 </button>
                             </div>
