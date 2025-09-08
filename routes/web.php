@@ -12,7 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('/create', function () {
+    Route::get('create', function () {
         return Inertia::render('create');
     })->name('create');
 });
