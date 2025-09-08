@@ -43,14 +43,14 @@ export default function Welcome() {
     return (
         <>
             <Head title="FYI Files" />
-            <div className="min-h-screen bg-white p-4 text-black dark:bg-white dark:text-black">
+            <div className="min-h-screen bg-white p-4 text-black dark:bg-gray-400 dark:text-black">
                 <div className="mx-auto max-w-4xl">
-                    <div className="rounded-lg border border-gray-200 bg-white shadow-lg">
-                        <div className="relative border-b border-gray-200 p-6">
+                    <div className="rounded-lg border border-gray-500 bg-gray-200 shadow-lg">
+                        <div className="relative border-b border-gray-500 p-6">
                             <div className="flex items-center justify-between">
                                 <h1 className="text-2xl font-bold text-gray-800">FYI Files</h1>
                                 <div className="flex gap-2">
-                                    <button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
+                                    <button className="inline-flex items-center rounded-md border border-gray-500 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
                                         <Edit className="mr-1 h-4 w-4" />
                                         Edit
                                     </button>
@@ -66,7 +66,7 @@ export default function Welcome() {
                                 {/* Left Column - Photo and Basic Info */}
                                 <div className="w-50 space-y-4">
                                     <div className="flex flex-col items-center">
-                                        <div className="flex h-40 w-40 items-center justify-center rounded-full border-4 border-gray-200 bg-gray-100">
+                                        <div className="flex h-40 w-40 items-center justify-center rounded-full border-4 border-gray-300 bg-gray-100">
                                             <span className="text-4xl text-gray-400">👤</span>
                                         </div>
                                         <button className="mt-6 inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm leading-4 font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none">
@@ -157,7 +157,7 @@ export default function Welcome() {
                                             <input
                                                 value={calculateAge(dateOfBirth)}
                                                 readOnly
-                                                className="mt-1 block w-full rounded-md border border-gray-300 bg-blue-50 px-3 py-2 text-center font-semibold shadow-sm focus:outline-none"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 text-center font-semibold shadow-sm focus:outline-none"
                                             />
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@ export default function Welcome() {
                                         ))}
 
                                         {conditions.length === 0 && !showAddCondition && (
-                                            <div className="py-8 text-center text-gray-500">
+                                            <div className="py-8 text-left text-gray-500">
                                                 <p>No medical conditions added yet.</p>
                                                 <p className="text-sm">Click "Add" to add a condition.</p>
                                             </div>
