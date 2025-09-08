@@ -30,3 +30,7 @@ yarn-error.log
 frankenphp
 frankenphp-worker.php
 .mcp.json
+.DS_Store
+resources/.DS_Store
+resources/js/.DS_Store
+resources/js/pages/.DS_Store
