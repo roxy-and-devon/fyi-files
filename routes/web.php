@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -15,6 +16,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('create', function () {
         return Inertia::render('create');
     })->name('create');
+
+    Route::post('/students', [StudentController::class, 'store']);
 });
 
 require __DIR__ . '/settings.php';
