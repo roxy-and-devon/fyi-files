@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 12.26.4.
+ * Generated for Laravel 12.30.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -6937,7 +6937,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get a database connection instance from the given configuration.
          *
-         * @param string $name
+         * @param \UnitEnum|string $name
          * @param array $config
          * @param bool $force
          * @return \Illuminate\Database\MySqlConnection
@@ -6952,7 +6952,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Disconnect from the given database and remove from local cache.
          *
-         * @param string|null $name
+         * @param \UnitEnum|string|null $name
          * @return void
          * @static
          */
@@ -6965,7 +6965,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Disconnect from the given database.
          *
-         * @param string|null $name
+         * @param \UnitEnum|string|null $name
          * @return void
          * @static
          */
@@ -6978,7 +6978,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Reconnect to the given database.
          *
-         * @param string|null $name
+         * @param \UnitEnum|string|null $name
          * @return \Illuminate\Database\Connection
          * @static
          */
@@ -6991,7 +6991,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the default database connection for the callback execution.
          *
-         * @param string $name
+         * @param \UnitEnum|string $name
          * @param callable $callback
          * @return mixed
          * @static
@@ -7598,7 +7598,7 @@ namespace Illuminate\Support\Facades {
          * Register a callback to be invoked when the connection queries for longer than a given amount of time.
          *
          * @param \DateTimeInterface|\Carbon\CarbonInterval|float|int $threshold
-         * @param (callable(\Illuminate\Database\Connection, class-string<\Illuminate\Database\Events\QueryExecuted>): mixed) $handler
+         * @param (callable(\Illuminate\Database\Connection, \Illuminate\Database\Events\QueryExecuted): mixed) $handler
          * @return void
          * @static
          */
@@ -18838,7 +18838,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the default session driver name.
          *
-         * @return string
+         * @return string|null
          * @static
          */
         public static function getDefaultDriver()
@@ -19271,6 +19271,18 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Session\Store $instance */
             $instance->flashInput($value);
+        }
+
+        /**
+         * Get the session cache instance.
+         *
+         * @return \Illuminate\Contracts\Cache\Repository
+         * @static
+         */
+        public static function cache()
+        {
+            /** @var \Illuminate\Session\Store $instance */
+            return $instance->cache();
         }
 
         /**
@@ -22929,65 +22941,6 @@ namespace Illuminate\Support\Facades {
             }
     }
 
-namespace Laravel\Mcp\Server\Facades {
-    /**
-     * @see \Laravel\Mcp\Server\Registrar
-     */
-    class Mcp {
-        /**
-         * Register an web-based MCP server running over HTTP.
-         *
-         * @static
-         */
-        public static function web($handle, $serverClass)
-        {
-            /** @var \Laravel\Mcp\Server\Registrar $instance */
-            return $instance->web($handle, $serverClass);
-        }
-
-        /**
-         * Register a local MCP server running over STDIO.
-         *
-         * @static
-         */
-        public static function local($handle, $serverClass)
-        {
-            /** @var \Laravel\Mcp\Server\Registrar $instance */
-            return $instance->local($handle, $serverClass);
-        }
-
-        /**
-         * Get the server class for a local MCP.
-         *
-         * @static
-         */
-        public static function getLocalServer($handle)
-        {
-            /** @var \Laravel\Mcp\Server\Registrar $instance */
-            return $instance->getLocalServer($handle);
-        }
-
-        /**
-         * @static
-         */
-        public static function getWebServer($handle)
-        {
-            /** @var \Laravel\Mcp\Server\Registrar $instance */
-            return $instance->getWebServer($handle);
-        }
-
-        /**
-         * @static
-         */
-        public static function oauthRoutes($oauthPrefix = 'oauth')
-        {
-            /** @var \Laravel\Mcp\Server\Registrar $instance */
-            return $instance->oauthRoutes($oauthPrefix);
-        }
-
-            }
-    }
-
 namespace Laravel\Octane\Facades {
     /**
      * @see \Laravel\Octane\Octane
@@ -23352,6 +23305,19 @@ namespace  {
         {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->withoutGlobalScopes($scopes);
+        }
+
+        /**
+         * Remove all global scopes except the given scopes.
+         *
+         * @param array $scopes
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function withoutGlobalScopesExcept($scopes = [])
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->withoutGlobalScopesExcept($scopes);
         }
 
         /**
@@ -25170,7 +25136,7 @@ namespace  {
          *
          * @param mixed $relations
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param string $function
+         * @param string|null $function
          * @return \Illuminate\Database\Eloquent\Builder<static>
          * @static
          */
@@ -28137,7 +28103,6 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
     class View extends \Illuminate\Support\Facades\View {}
     class Vite extends \Illuminate\Support\Facades\Vite {}
-    class Mcp extends \Laravel\Mcp\Server\Facades\Mcp {}
     class Octane extends \Laravel\Octane\Facades\Octane {}
 }
 
