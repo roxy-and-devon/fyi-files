@@ -6,6 +6,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -66,7 +67,27 @@ class FortifyServiceProvider extends ServiceProvider
             'status' => $request->session()->get('status'),
         ]));
 
-        Fortify::registerView(fn () => Inertia::render('auth/register'));
+        Fortify::registerView(function (Request $request) {
+            $invitationToken = $request->query('invitation');
+            $invitationEmail = null;
+
+            if ($invitationToken) {
+                $invitation = DB::table('person_user')
+                    ->where('invitation_token', $invitationToken)
+                    ->whereNull('user_id')
+                    ->whereNull('accepted_at')
+                    ->first();
+
+                if ($invitation) {
+                    $invitationEmail = $invitation->email;
+                }
+            }
+
+            return Inertia::render('auth/register', [
+                'invitation' => $invitationToken,
+                'invitationEmail' => $invitationEmail,
+            ]);
+        });
 
         Fortify::twoFactorChallengeView(fn () => Inertia::render('auth/two-factor-challenge'));
 

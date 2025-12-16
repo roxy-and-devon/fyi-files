@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -60,6 +62,28 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'remember_token',
     ];
+
+    public function people(): BelongsToMany
+    {
+        return $this->belongsToMany(Person::class)
+            ->withPivot(['role', 'invited_by', 'invitation_token', 'invited_at', 'accepted_at', 'last_reminder_sent_at'])
+            ->withTimestamps();
+    }
+
+    public function primaryPeople(): HasMany
+    {
+        return $this->hasMany(Person::class, 'user_id');
+    }
+
+    public function guardedPeople(): BelongsToMany
+    {
+        return $this->people()->wherePivot('role', 'guardian');
+    }
+
+    public function staffAccessPeople(): BelongsToMany
+    {
+        return $this->people()->wherePivot('role', 'school_staff');
+    }
 
     /**
      * Get the attributes that should be cast.

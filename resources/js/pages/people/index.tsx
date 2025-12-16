@@ -2,17 +2,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/app-layout';
 import { create, show } from '@/actions/App/Http/Controllers/PersonController';
-import { dashboard } from '@/routes';
-import { show as invitationShow } from '@/routes/invitations';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link, router, usePage } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { Plus } from 'lucide-react';
-import { useEffect } from 'react';
+
+import { index as peopleIndex } from '@/actions/App/Http/Controllers/PersonController';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard().url,
+        title: 'People',
+        href: peopleIndex().url,
     },
 ];
 
@@ -23,37 +22,38 @@ interface Person {
     user_id: number;
 }
 
-interface DashboardProps {
+interface PeopleIndexProps {
     people: Person[];
 }
 
-export default function Dashboard({ people }: DashboardProps) {
-    const page = usePage<{ pendingInvitation?: string }>();
-    const { pendingInvitation } = page.props;
-
-    // Redirect to invitation if there's a pending invitation after registration/verification
-    useEffect(() => {
-        if (pendingInvitation) {
-            router.visit(invitationShow(pendingInvitation).url);
-        }
-    }, [pendingInvitation]);
+export default function PeopleIndex({ people }: PeopleIndexProps) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
+            <Head title="People" />
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
+                <div className="flex items-center justify-between">
+                    <h1 className="text-2xl font-bold">People</h1>
+                    <Link href={create().url}>
+                        <Button>
+                            <Plus className="mr-2 h-4 w-4" />
+                            Add Person
+                        </Button>
+                    </Link>
+                </div>
+
                 {people.length === 0 ? (
                     <Card>
                         <CardHeader>
-                            <CardTitle>No students yet</CardTitle>
+                            <CardTitle>No people yet</CardTitle>
                             <CardDescription>
-                                Get started by adding your first student.
+                                Get started by adding your first person.
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Link href={create().url}>
                                 <Button>
                                     <Plus className="mr-2 h-4 w-4" />
-                                    Add Your Student
+                                    Add Your First Person
                                 </Button>
                             </Link>
                         </CardContent>
