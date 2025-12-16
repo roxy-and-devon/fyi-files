@@ -1,0 +1,13 @@
+{
+    "agents": [
+        "cursor"
+    ],
+    "editors": [
+        "cursor"
+    ],
+    "guidelines": [
+        "laravel/fortify",
+        "tightenco/duster"
+    ],
+    "herd_mcp": true
+}

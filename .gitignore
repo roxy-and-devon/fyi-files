@@ -10,6 +10,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+.DS_Store
 .env
 .env.backup
 .env.production
@@ -25,12 +26,10 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+.mcp.json
+.junie/mcp/
+.cursor/mcp.json
 
 **/caddy
 frankenphp
 frankenphp-worker.php
-.mcp.json
-.DS_Store
-resources/.DS_Store
-resources/js/.DS_Store
-resources/js/pages/.DS_Store

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,23 +23,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Disable mass assignment protection in all environments
+        $isProduction = $this->app->environment(['production', 'prod']);
+
+        DB::prohibitDestructiveCommands($isProduction);
+
+        Vite::usePrefetchStrategy('aggressive');
+
         Model::unguard();
 
-        // Development settings for better coding experience
-        if ($this->app->environment('local')) {
-            // Enable query logging for debugging
-            DB::enableQueryLog();
+        Model::shouldBeStrict(! $isProduction);
+        Model::preventLazyLoading(! $isProduction);
+        Model::preventAccessingMissingAttributes(! $isProduction);
+        Model::preventSilentlyDiscardingAttributes(! $isProduction);
+        Model::preventAccessingMissingAttributes(! $isProduction);
 
-            // Prevent lazy loading to catch N+1 queries
-            Model::preventLazyLoading();
-            Model::preventAccessingMissingAttributes();
-            Model::preventSilentlyDiscardingAttributes();
+        Model::automaticallyEagerLoadRelationships($isProduction);
 
-            // Enable model events for all models
-            Model::shouldBeStrict();
-        }
+        URL::forceScheme('https');
 
-        Vite::prefetch(concurrency: 5);
     }
 }

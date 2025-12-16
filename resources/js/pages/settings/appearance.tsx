@@ -6,12 +6,12 @@ import { type BreadcrumbItem } from '@/types';
 
 import AppLayout from '@/layouts/app-layout';
 import SettingsLayout from '@/layouts/settings/layout';
-import { appearance } from '@/routes';
+import { edit as editAppearance } from '@/routes/appearance';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Appearance settings',
-        href: appearance().url,
+        href: editAppearance().url,
     },
 ];
 
@@ -22,7 +22,10 @@ export default function Appearance() {
 
             <SettingsLayout>
                 <div className="space-y-6">
-                    <HeadingSmall title="Appearance settings" description="Update your account's appearance settings" />
+                    <HeadingSmall
+                        title="Appearance settings"
+                        description="Update your account's appearance settings"
+                    />
                     <AppearanceTabs />
                 </div>
             </SettingsLayout>
